@@ -1,7 +1,7 @@
 # Личный проект «Кекстаграм»
 
 * Студент: [Nadynn Guțu](https://up.htmlacademy.ru/javascript/25/user/1840961).
-* Наставник: `Руслан Бреев`.
+* Наставник: `Руслан Бреев https://htmlacademy.ru/profile/blckwltz`.
 
 ---
 
