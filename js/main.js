@@ -1,14 +1,3 @@
-// Источник - https://github.com/you-dont-need/You-Dont-Need-Lodash-Underscore#_random
-
-function getRandom (a, b) {
-  const lower = Math.ceil(Math.min(Math.abs(a), Math.abs(b)));
-  const upper = Math.floor(Math.max(Math.abs(a), Math.abs(b)));
-  const result = Math.random() * (upper - lower + 1) + lower;
-  return Math.floor(result);
-}
-
-getRandom();
-
 function checkStringLength (string, length) {
   return string.length <= length;
 }
@@ -53,44 +42,35 @@ const MAX_OBJECT = 6;
 
 //Генерация числа из массива
 
-let RandomNumber;
-const getRandomNumber = (min, max) => {
-  const arr = [];
-  for (let i = min; i < max; i++) {
-    RandomNumber = getRandom(min, max);
-    if (arr.includes(RandomNumber) === true) {
-      i = i - 1;
-    } else {
-      if (RandomNumber > max === false) {
-        arr.push(RandomNumber);
-      }
-    }
-  }
-  return RandomNumber;
-};
+function getRandomPositiveInteger (a, b) {
+  const lower = Math.ceil(Math.min(Math.abs(a), Math.abs(b)));
+  const upper = Math.floor(Math.max(Math.abs(a), Math.abs(b)));
+  const result = Math.random() * (upper - lower + 1) + lower;
+  return Math.floor(result);
+}
 
 //Функции по созданию случайных чисел по заданным параметрам
 
-const getLikesNumber = () => getRandom(MIN_LIKES,MAX_LIKES);
-const getCommentsNumber = () => getRandomNumber(0, COMMENTS.length-1);
-const getNamesNumber = () => getRandomNumber(0, NAMES.length-1);
-const getAvatarNumber = () => getRandom(MIN_AVATAR, MAX_AVATAR);
-const getObjectsNumber = () => getRandomNumber(MIN_OBJECT, MAX_OBJECT);
+const getLikesNumber = () => getRandomPositiveInteger(MIN_LIKES,MAX_LIKES);
+const getCommentsNumber = () => getRandomPositiveInteger(0, COMMENTS.length-1);
+const getNamesNumber = () => getRandomPositiveInteger(0, NAMES.length-1);
+const getAvatarNumber = () => getRandomPositiveInteger(MIN_AVATAR, MAX_AVATAR);
+const getObjectsNumber = () => getRandomPositiveInteger(MIN_OBJECT, MAX_OBJECT);
 
 //Функция создания массива объектов коментариев
 
 const getObjectsArray = () => {
-  const ObjectsArray = [];
+  const objectsArray = [];
   for (let i = 1; i <= getObjectsNumber(); i++) {
-    const CommentsObject = {
+    const commentsObject = {
       id: i,
       avatar: `img/avatar-${getAvatarNumber()}.svg`,
       message: COMMENTS[getCommentsNumber()],
       name: NAMES[getNamesNumber()],
     };
-    ObjectsArray.push(CommentsObject);
+    objectsArray.push(commentsObject);
   }
-  return ObjectsArray;
+  return objectsArray;
 };
 
 //Функция формирования объекта описания фото и комментария из массива
