@@ -64,21 +64,17 @@ const getObjectsArray = () => {
 //Функция формирования объекта описания фото и комментария из массива
 
 const createRandomDescription = (_elem, id) => ({
-  author: {
-    id: (++id), //идентификатор описания. Это число от 1 до 25. Идентификаторы не должны повторяться.
-    url: `photos/${String(+id)}.jpg`, //строка — адрес картинки вида photos/{{i}}.jpg, где {{i}} — это число от 1 до 25. Адреса картинок не должны повторяться.
-    description: 'Фотография, которую давно хотел выложить',
-    likes: getLikesNumber(), //количество лайков, поставленных фотографии. Случайное число от 15 до 200.
-  },
+  id: (++id), //идентификатор описания. Это число от 1 до 25. Идентификаторы не должны повторяться.
+  url: `photos/${String(+id)}.jpg`, //строка — адрес картинки вида photos/{{i}}.jpg, где {{i}} — это число от 1 до 25. Адреса картинок не должны повторяться.
+  description: 'Фотография, которую давно хотел выложить',
+  likes: getLikesNumber(), //количество лайков, поставленных фотографии. Случайное число от 15 до 200.
   comments: getObjectsArray(),
 });
 
 //Функция cоздания и вывода массива
 
 const getObjectOutput = () =>
-  Array.from({
-    length: OBJECT_COUNT,
-  }, createRandomDescription);
+  Array.from({length: OBJECT_COUNT,}, createRandomDescription);
 getObjectOutput();
 
 export {getObjectOutput};
