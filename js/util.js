@@ -15,14 +15,5 @@ function checkStringLength (string, length) {
 
 checkStringLength('строка', 5);
 
-// Функция закрытия окна по Escape
-
-const getEscapeEvent = (evt, action) => {
-  if (evt.key === 'Escape') {
-    action();
-  }
-};
-
 export {getRandomPositiveInteger};
 export {checkStringLength};
-export {getEscapeEvent};
