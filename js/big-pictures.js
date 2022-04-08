@@ -1,4 +1,4 @@
-import {getEscapeEvent} from './util.js';
+import {isEscapeEvent} from './util.js';
 
 //Описание переменных
 const bigPicture =  document.querySelector('.big-picture');
@@ -61,7 +61,7 @@ const closeBigPicture = () => {
 
 // Функция закрытия окна полноразмерного изображения по Escape
 function onBigPictureEscPress (evt) {
-  getEscapeEvent(evt, closeBigPicture);
+  isEscapeEvent(evt, closeBigPicture);
 }
 
 //Обработчик закрытия окна кликом по иконке закрытия
