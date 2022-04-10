@@ -1,5 +1,4 @@
 //Генерация числа из массива
-
 function getRandomPositiveInteger (a, b) {
   const lower = Math.ceil(Math.min(Math.abs(a), Math.abs(b)));
   const upper = Math.floor(Math.max(Math.abs(a), Math.abs(b)));
@@ -8,13 +7,11 @@ function getRandomPositiveInteger (a, b) {
 }
 
 // Функция для проверки максимальной длины строки.
-
 function checkStringLength (string, length) {
   return string.length <= length;
 }
 
 // Функция закрытия окна по Escape
-
 const isEscapeEvent = (evt, action) => {
   if (evt.key === 'Escape') {
     action();

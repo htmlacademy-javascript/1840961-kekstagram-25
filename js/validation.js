@@ -9,11 +9,11 @@ const commentTextarea = uploadForm.querySelector('.text__description');
 const SPACE_HASHTAG_SEPARATOR = ' ';
 
 //Параметры комментариев
-const commentsFeatures = {
+const CommentsFeatures = {
   MAX_LENGTH: 140
 };
 
-const hashtagsFeatures = {
+const HashtagsFeatures = {
   MAX_NUMBER: 5,
   MAX: 20,
   REGULAR: /^#[A-Za-za-Яа-яЁё 0-9]{1,19}$/,
@@ -21,14 +21,14 @@ const hashtagsFeatures = {
 };
 
 //Сообщания об ошибках
-const errorMessages = {
-  COMMENT_LONG: `Комментарий не может составлять больше ${commentsFeatures.MAX_LENGTH} символов`,
+const ErrorMessages = {
+  COMMENT_LONG: `Комментарий не может составлять больше ${CommentsFeatures.MAX_LENGTH} символов`,
   SPACE_HASHTAGS: 'Хэш-теги должны разделяться пробелами',
   HASH_SYMBOL: 'Хэш-тег должен начинаться с символа # (решётка)',
   TOO_SHORT: 'Хэш-тег не может состоять только из символа # (решётка)',
-  HASHTAGS_LONG: `Максимальная длина одно хэш-тега не должна превышать ${hashtagsFeatures.MAX} символов`,
+  HASHTAGS_LONG: `Максимальная длина одно хэш-тега не должна превышать ${HashtagsFeatures.MAX} символов`,
   UNIQUE: 'Хэш-тег не может быть использован дважды',
-  OVER_MAX: `Количество хэш-тегов не должно быть больше ${hashtagsFeatures.MAX_NUMBER}`,
+  OVER_MAX: `Количество хэш-тегов не должно быть больше ${HashtagsFeatures.MAX_NUMBER}`,
   BAG_SYMBOL_MESSAGE: 'Строка после решетки должна состоять из букв и чисел и не может содержать пробелы, спецсимволы (#, @, $ и.т.п), символы пунктуации (тире, запятая, и.т.п), эмодзи'
 };
 
@@ -52,35 +52,35 @@ const stringToArray = (string, separator) => string.split(separator);
 
 // Обработчик проверки длины строки ввода комментария
 const getCommentTextareaInput = (value) => (
-  checkStringLength(value, commentsFeatures.MAX_LENGTH)
+  checkStringLength(value, CommentsFeatures.MAX_LENGTH)
 );
-pristine.addValidator(commentTextarea, getCommentTextareaInput, errorMessages.COMMENT_LONG);
+pristine.addValidator(commentTextarea, getCommentTextareaInput, ErrorMessages.COMMENT_LONG);
 
 // Обработчик проверки длины строки ввода хештега (не более 20 символов)
 pristine.addValidator(inputHashtags, () => {
   const hashtags = stringToArray(inputHashtags.value.toLowerCase(), SPACE_HASHTAG_SEPARATOR);
-  return hashtags.every((hashtag) => hashtag.length <= hashtagsFeatures.MAX);
-}, errorMessages.HASHTAGS_LONG);
+  return hashtags.every((hashtag) => hashtag.length <= HashtagsFeatures.MAX);
+}, ErrorMessages.HASHTAGS_LONG);
 
 //Проверка ввода недопустимых регулярных символов
 pristine.addValidator(inputHashtags, () => {
   const hashtags = stringToArray(inputHashtags.value.toLowerCase(), SPACE_HASHTAG_SEPARATOR);
-  return hashtags.every((hashtag) => hashtagsFeatures.REGULAR.test(hashtag));
-}, errorMessages.BAG_SYMBOL_MESSAGE);
+  return hashtags.every((hashtag) => HashtagsFeatures.REGULAR.test(hashtag));
+}, ErrorMessages.BAG_SYMBOL_MESSAGE);
 
 //Проверка на обязательное наличие первого символа '#'
 pristine.addValidator(inputHashtags, () => {
   const hashtags = stringToArray(inputHashtags.value.toLowerCase(), SPACE_HASHTAG_SEPARATOR);
   return hashtags.every((hashtag) => hashtag.startsWith('#'));
-}, errorMessages.HASH_SYMBOL);
+}, ErrorMessages.HASH_SYMBOL);
 
 //Проверка на наличие ввода только символа #
 pristine.addValidator(inputHashtags, (value) => {
-  if (value.match(hashtagsFeatures.IS_HASH_SYMBOL)) {
+  if (value.match(HashtagsFeatures.IS_HASH_SYMBOL)) {
     return true;
   }
   return false;
-}, errorMessages.TOO_SHORT);
+}, ErrorMessages.TOO_SHORT);
 
 //Проверка наличия повторного хэштега
 pristine.addValidator(inputHashtags, () => {
@@ -95,15 +95,15 @@ pristine.addValidator(inputHashtags, () => {
     }
   }
   return duplicateExists;
-}, errorMessages.UNIQUE);
+}, ErrorMessages.UNIQUE);
 
 //Проверка количества введенных хештегов не более 5
 pristine.addValidator(inputHashtags, (value) => {
-  if (!(value.split(' ').length > hashtagsFeatures.MAX_NUMBER)) {
+  if (!(value.split(' ').length > HashtagsFeatures.MAX_NUMBER)) {
     return true;
   }
   return false;
-}, errorMessages.OVER_MAX);
+}, ErrorMessages.OVER_MAX);
 
 //Проверка пробелов между хэштегами
 pristine.addValidator(inputHashtags, (value) => {
@@ -111,4 +111,4 @@ pristine.addValidator(inputHashtags, (value) => {
     return true;
   }
   return false;
-}, errorMessages.SPACE_HASHTAGS);
+}, ErrorMessages.SPACE_HASHTAGS);
