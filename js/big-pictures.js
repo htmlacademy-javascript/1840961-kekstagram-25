@@ -67,14 +67,10 @@ const getCurentCommentCount = (comments) => comments ? comments.children.length:
 function onCommentsLoaderClick () {
   createCommentsFragment(commentsArrayDataRemain);
   socialCommentCount.firstChild.textContent = `${getCurentCommentCount(commentsList)} из `;
-  if (commentsArrayData.length === 0 || commentsArrayData.length) {
-    commentsLoader.classList.add('hidden');
-    commentsLoader.removeEventListener('click', onCommentsLoaderClick);
-  }
 }
 
 // Закрытие окна полноразмерного изображения
-const CloseBigPicture = () => {
+const closeBigPicture = () => {
   bigPicture.classList.add('hidden');
   body.classList.remove('modal-open');
   document.removeEventListener('keydown', onBigPictureEscPress);
@@ -83,12 +79,12 @@ const CloseBigPicture = () => {
 
 // Функция закрытия окна полноразмерного изображения по Escape
 function onBigPictureEscPress (evt) {
-  isEscapeEvent(evt, CloseBigPicture);
+  isEscapeEvent(evt, closeBigPicture);
 }
 
 //Обработчик закрытия окна кликом по иконке закрытия
 function onBigPictureCloseClick () {
-  CloseBigPicture();
+  closeBigPicture();
 }
 
 export {ShowBigPhoto};
