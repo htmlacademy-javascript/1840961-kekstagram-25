@@ -1,7 +1,7 @@
 import {isEscapeEvent} from './util.js';
 import './validation.js';
 
-//Описание переменных
+//Описание переменныхx
 const body = document.body;
 const uploadFileInput = document.querySelector('#upload-file');
 const uploadForm = document.querySelector('.img-upload__form');
