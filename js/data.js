@@ -1,6 +1,6 @@
 import {getRandomPositiveInteger } from './util';
 
-//Создаем массив комментариев
+// Создаем массив комментариев
 const COMMENTS = [
   'Все отлично!',
   'В целом все неплохо. Но не все.',
@@ -10,7 +10,7 @@ const COMMENTS = [
   'Лица у людей на фотке перекошены, как будто их избивают. Как можно было поймать такой неудачный момент?!',
 ];
 
-//Создаем массив имен
+// Создаем массив имен
 const NAMES = [
   'Василий',
   'Александр',
@@ -24,7 +24,7 @@ const NAMES = [
   'Николай',
 ];
 
-//Основные параметры расчетных значений
+// Основные параметры расчетных значений
 const OBJECT_COUNT = 25;
 const MIN_LIKES = 15;
 const MAX_LIKES = 200;
@@ -34,14 +34,14 @@ const MIN_OBJECT = 1;
 const MAX_OBJECT = 15;
 
 
-//Функции по созданию случайных чисел по заданным параметрам
+// Функции по созданию случайных чисел по заданным параметрам
 const getLikesNumber = () => getRandomPositiveInteger(MIN_LIKES,MAX_LIKES);
 const getCommentsNumber = () => getRandomPositiveInteger(0, COMMENTS.length-1);
 const getNamesNumber = () => getRandomPositiveInteger(0, NAMES.length-1);
 const getAvatarNumber = () => getRandomPositiveInteger(MIN_AVATAR, MAX_AVATAR);
 const getObjectsNumber = () => getRandomPositiveInteger(MIN_OBJECT, MAX_OBJECT);
 
-//Функция создания массива объектов коментариев
+// Функция создания массива объектов коментариев
 const getObjectsArray = () => {
   const objectsArray = [];
   for (let i = 1; i <= getObjectsNumber(); i++) {
@@ -56,7 +56,7 @@ const getObjectsArray = () => {
   return objectsArray;
 };
 
-//Функция формирования объекта описания фото и комментария из массива
+// Функция формирования объекта описания фото и комментария из массива
 const createRandomDescription = (_elem, id) => ({
   id: (++id),
   url: `photos/${String(+id)}.jpg`,
@@ -65,7 +65,7 @@ const createRandomDescription = (_elem, id) => ({
   comments: getObjectsArray(),
 });
 
-//Функция cоздания и вывода массива
+// Функция cоздания и вывода массива
 const getObjectOutput = () =>
   Array.from({length: OBJECT_COUNT,}, createRandomDescription);
 getObjectOutput();
