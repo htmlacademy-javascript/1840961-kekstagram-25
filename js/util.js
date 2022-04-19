@@ -20,7 +20,7 @@ const isEscapeEvent = (evt, action) => {
   }
 };
 
-//Показ сообщения об отправке с ошибкой на 5 секунд
+// Показ сообщения об отправке с ошибкой на 5 секунд
 const showAlert = (message) => {
   const alertContainer = document.createElement('div');
   alertContainer.style.zIndex = 100;
@@ -55,7 +55,7 @@ const mixPhotosArray = (array) => {
   return array;
 };
 
-//Устранение дребезга списка фотографий
+// Устранение дребезга списка фотографий
 const debounce = (callback, timeoutDelay = 500) => {
   let timeoutId;
   return (...rest) => {
