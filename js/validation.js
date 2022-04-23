@@ -38,7 +38,7 @@ const ErrorMessages = {
 const pristine = new Pristine(uploadFormNode, {
   classTo: 'img-upload__text',
   errorClass: 'img-upload__text--invalid',
-  succesClass: 'img-upload__text--valid',
+  successClass: 'img-upload__text--valid',
   errorTextParent: 'img-upload__text',
   errorTextTag: 'div',
   errorTextClass: 'text'
@@ -103,20 +103,11 @@ pristine.addValidator(inputHashtagsNode, (value) => {
   return false;
 }, ErrorMessages.TOO_SHORT);
 
-
 // Проверка наличия повторного хэштега
 pristine.addValidator(inputHashtagsNode, () => {
   const hashtagsArr = getStringArray(inputHashtagsNode.value.toLowerCase(), SPACE_HASHTAG_SEPARATOR);
-  const copyArrDublicates = Array.from(hashtagsArr);
-  let duplicateExists = true;
-  for (let i = 0; i <= hashtagsArr.length; i++) {
-    if (!(hashtagsArr[i] in copyArrDublicates)) {
-      copyArrDublicates[hashtagsArr[i]] = true;
-    } else {
-      duplicateExists = false;
-    }
-  }
-  return duplicateExists;
+  const hashtagsSet = new Set(hashtagsArr);
+  return hashtagsArr.length === hashtagsSet.size;
 }, ErrorMessages.UNIQUE);
 
 // Проверка количества введенных хештегов не более 5

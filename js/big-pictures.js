@@ -58,7 +58,7 @@ const ShowBigPhoto = (bigPhoto) => {
 };
 
 // Проверка текущего числа комментариев
-const getCurentCommentCount = (comments) => comments ? comments.children.length: 0;
+const getCurrentCommentCount = (comments) => comments ? comments.children.length: 0;
 
 // Обработчик загрузки комментариев
 function onCommentsLoaderClick () {
@@ -68,7 +68,7 @@ function onCommentsLoaderClick () {
     commentsLoaderNode.removeEventListener('click', onCommentsLoaderClick);
     commentsCounter = MAX_COMMENT;
   }
-  socialCommentCountNode.firstChild.textContent = `${getCurentCommentCount(commentsListNode)} из `;
+  socialCommentCountNode.firstChild.textContent = `${getCurrentCommentCount(commentsListNode)} из `;
   if (commentsArrayData.length === 0) {
     commentsLoaderNode.classList.add('hidden');
     commentsLoaderNode.removeEventListener('click', onCommentsLoaderClick);

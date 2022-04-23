@@ -1,7 +1,8 @@
 import {isEscapeEvent} from './util.js';
 import {getScaleImageTransform} from './scale.js';
 
-// Описание переменныхx
+// Описание переменных
+const DEFAULT_SCALE_VALUE = 100;
 const body = document.body;
 const uploadFileInputNode = document.querySelector('#upload-file');
 const uploadFormNode = document.querySelector('.img-upload__form');
@@ -10,7 +11,6 @@ const editImageCloseButtonNode = editImageOverlayNode.querySelector('.img-upload
 const inputHashtagsNode = document.querySelector('.text__hashtags');
 const commentTextAreaNode = document.querySelector('.text__description');
 const imageScaleValueNode = document.querySelector('.scale__control--value');
-const DEFAULT_SCALE_VALUE = 100;
 const imagePreview = document.querySelector('.img-upload__preview');
 const image = imagePreview.querySelector('img');
 const sliderBlock = document.querySelector('.effect-level');

@@ -4,13 +4,13 @@ import {getData} from './api.js';
 import {createPhotosFragment} from './picture.js';
 
 // Описание переменных
+const RANDOM_PHOTOS = 10;
+const TIMEOUT_DELAY = 500;
 const filterBlockNode = document.querySelector('.img-filters');
 const filterBlockFormNode = filterBlockNode.querySelector('.img-filters__form');
 const discussedFilterNode = filterBlockNode.querySelector('#filter-discussed');
 const randomFilterNode = filterBlockNode.querySelector('#filter-random');
 const defaultFilterNode = filterBlockNode.querySelector('#filter-default');
-const RANDOM_PHOTOS = 10;
-const TIMEOUT_DELAY = 500;
 let photosArray;
 
 // Переключение класса активной кнопки

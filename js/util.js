@@ -8,7 +8,7 @@ function getRandomPositiveInteger (a, b) {
   return Math.floor(result);
 }
 
-// Функция для проверки максимальной длины строки.
+// Функция для проверки максимальной длины строки
 function checkStringLength (string, length) {
   return string.length <= length;
 }
@@ -23,11 +23,11 @@ const isEscapeEvent = (evt, action) => {
 // Показ сообщения об отправке с ошибкой на 5 секунд
 const showAlert = (message) => {
   const alertContainer = document.createElement('div');
-  alertContainer.style.zIndex = 100;
+  alertContainer.style.zIndex = '100';
   alertContainer.style.position = 'absolute';
-  alertContainer.style.left = 0;
-  alertContainer.style.top = 0;
-  alertContainer.style.right = 0;
+  alertContainer.style.left = '0';
+  alertContainer.style.top = '0';
+  alertContainer.style.right = '0';
   alertContainer.style.padding = '10px 3px';
   alertContainer.style.fontSize = '30px';
   alertContainer.style.textAlign = 'center';

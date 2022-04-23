@@ -91,12 +91,11 @@ noUiSlider.create(sliderElementNode, {
 });
 
 // Создаем событие клика на радиокнопку и выбор эффекта
-let effectFilter;
 sliderBlockNode.classList.add('hidden');
 effectsListNode.addEventListener('click', (evt) => {
   if (evt.target.matches('.effects__radio')) {
     const effect = evt.target.value;
-    effectFilter = Effects[effect];
+    const effectFilter = Effects[effect];
     sliderElementNode.noUiSlider.updateOptions(effectFilter);
     if (effect === 'none') {
       imageNode.style.filter = '';
